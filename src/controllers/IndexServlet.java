@@ -35,12 +35,12 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DButil.createEntityManager();
 
-        List<Task> taskes = em.createNamedQuery("getAllTaskes", Task.class)
+        List<Task> tasks = em.createNamedQuery("getAllTasks", Task.class)
                 .getResultList();
 
         em.close();
 
-        request.setAttribute("taskes", taskes);
+        request.setAttribute("tasks", tasks);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/task/index.jsp");
         rd.forward(request, response);
